@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-2 md: grid-cols-2">
-        <div v-for="(movieList,index) in getMovieList">
+        <div v-for="(movieList,index) in filteredMovieList">
             <div v-if="movieList.Poster !== 'N/A'">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg ml-3">
                     <img class="w-full sm: h-full" :src="movieList.Poster" :alt="movieList.Title">
@@ -27,6 +27,7 @@ const store = useStore();
 const getMovieList = computed(() => {
   return store.getters.getMovieList;
 });
+const filteredMovieList = computed(() => getMovieList.value.filter(movie => movie.Poster != 'N/A'));
 onMounted(() => {
   store.dispatch("fetchMovieList");
 });

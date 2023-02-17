@@ -6,7 +6,22 @@ export default createStore({
   state: {
     movieList: [],
     movieDetail: [],
-    movieHistory: [ {MovieId: "blackpanther",SeatCode: "2b"}]
+    movieHistory: [ {MovieId: "blackpanther",SeatCode: "2b"}],
+    seat: [{Id: "A1", Label:"A1", Selected: false, Sale: false},
+          {Id: "A2", Label:"A2", Selected: false, Sale: false},
+          {Id: "A3", Label:"A3", Selected: false, Sale: false},
+          {Id: "A4", Label:"A4", Selected: false, Sale: false},
+          {Id: "A5", Label:"A5", Selected: false, Sale: false},
+          {Id: "B1", Label:"B1", Selected: false, Sale: false},
+          {Id: "B2", Label:"B2", Selected: false, Sale: false},
+          {Id: "B3", Label:"B3", Selected: false, Sale: false},
+          {Id: "B4", Label:"B4", Selected: false, Sale: false},
+          {Id: "B5", Label:"B5", Selected: false, Sale: false},
+          {Id: "C1", Label:"C1", Selected: false, Sale: false},
+          {Id: "C2", Label:"C2", Selected: false, Sale: false},
+          {Id: "C3", Label:"C3", Selected: false, Sale: false},
+          {Id: "C4", Label:"C4", Selected: false, Sale: false},
+          {Id: "C5", Label:"C5", Selected: false, Sale: false},]
   },
   plugins: [createPersistedState()],
   getters: {
@@ -16,7 +31,6 @@ export default createStore({
   mutations: {
     INSERT_MOVIEHISTORY(state, history){
       state.movieHistory.push(history);
-      console.log(state.movieHistory[1])
 ;    },
     SET_MOVIELIST(state, movieList) {
       state.movieList =  movieList;
@@ -50,7 +64,6 @@ export default createStore({
     },
     async insertMovieHistory({commit}, history){
       try{
-        // console.log("1234")
         commit('INSERT_MOVIEHISTORY', history)
       }catch(error){
         alert(error);
