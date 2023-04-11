@@ -1,4 +1,5 @@
 <template>
+<div class="grid grid-cols-2">
     <div v-for="history in movieHistory">
         <div v-for="(movieList,index) in getMovieList">
             <div class="flex flex-col h-15 sm:flex-row ml-3">
@@ -19,6 +20,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 <script>
     export default {

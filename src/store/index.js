@@ -6,7 +6,7 @@ export default createStore({
   state: {
     movieList: [],
     movieDetail: [],
-    movieHistory: [ {MovieId: "blackpanther",SeatCode: "2b"}],
+    movieHistory: [],
     seat: [{Id: "A1", Label:"A1", Selected: false, Sale: false},
           {Id: "A2", Label:"A2", Selected: false, Sale: false},
           {Id: "A3", Label:"A3", Selected: false, Sale: false},

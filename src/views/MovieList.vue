@@ -1,9 +1,9 @@
 <template>
-    <div class="grid grid-cols-2 md: grid-cols-2">
+    <div class="grid grid-cols-2 md:grid-cols-4">
         <div v-for="(movieList,index) in filteredMovieList">
             <div v-if="movieList.Poster !== 'N/A'">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg ml-3">
-                    <img class="w-full sm: h-full" :src="movieList.Poster" :alt="movieList.Title">
+                <div class="max-w rounded overflow-hidden shadow-lg ml-3 mt-3 h-128 object-cover">
+                    <img class="w-full h-64 object-cover" :src="movieList.Poster" :alt="movieList.Title">
                     <div class="px-6 py-4">
                          <router-link :to="{name : 'moviedetail', params: { id: movieList.imdbID }}" class="font-bold text-xl mb-2">{{movieList.Title}}</router-link>
                     </div>
@@ -16,6 +16,7 @@
           History
         </router-link>
     </div>
+     <button @click="increment">{{ count }}</button>
 </template>
 
 
@@ -32,3 +33,26 @@ onMounted(() => {
   store.dispatch("fetchMovieList");
 });
 </script>
+
+
+
+<script>
+import { debounce } from 'lodash';
+
+export default {
+  data() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    increment() {
+        this.count++;
+    },
+        incrementDebounced: debounce(function() {
+      this.increment();
+    }, 500)
+  }
+}
+</script>
+
